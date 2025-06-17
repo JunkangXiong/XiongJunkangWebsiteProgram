@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>四、盡力卻真的做不到，可以做個普通人嗎？</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+     #back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 44px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s, visibility .3s;
+    z-index: 100;
+  }
+  #back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+       .fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .6s ease-out, transform .6s ease-out;
+}
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+     .detail-image-crop {
+  width: 100%;
+  /* 你想展示的高度，比如 300px，也可用百分比，比如父容器高度的一半 */
+  height: 800px;
+  overflow: hidden;
+  position: relative;
+}
+.detail-image-crop .detail-image {
+  position: absolute;
+  top: -70%;    /* 把整张图往上移动 25% */
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+    :root { --primary: #ff5722; --dark: #000; }
+    body { margin:0; font-family:'Noto Sans TC',sans-serif; background:#f7f7f7; color:#333; }
+    a { text-decoration:none; color: inherit; }
+
+    .site-header { background: var(--dark); color: #fff; text-align: center; padding:1rem 0; }
+    .site-header h1 { margin:0; font-size:1.8rem; }
+
+    .article-header { text-align:center; padding:2rem 1rem; background:#000; color:#fff; }
+    .article-header .highlight { font-size:1.5rem; color:var(--primary); margin-bottom:1rem; }
+    .article-header .title { font-size:2.5rem; font-weight:700; margin-bottom:1.5rem; }
+    .detail-image { max-width:100%; height:auto; border-radius:4px; margin-top:1rem; }
+
+    .article-body { max-width:800px; margin:0 auto; background:#fff; padding:2rem 1rem; line-height:1.8; font-size:1rem; }
+    .article-body h3 { font-size:1.8rem; font-weight:800; text-align:center; margin:2.5rem 0 1.5rem; color:var(--primary); }
+    .article-body p { margin-bottom:1.5rem; }
+
+    .illustration-section { text-align:center; margin:2rem 0; }
+    .illustration-section img { max-width:100%; height:auto; border-radius:4px; }
+    .caption { font-size:0.85rem; color:#ccc; text-align:center; margin-top:0.5rem; }
+
+    .wave-divider svg { display:block; width:100%; height:auto; }
+
+    .btn-outline-primary { border-color:#fff; color:#fff; }
+    .btn-outline-primary:hover { background:#fff; color:#000; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <h1>康康新聞網：專題報道</h1>
+  </header>
+
+  <section class="article-header">
+    <div class="highlight">學習困境中的普通願望</div>
+    <div class="title">盡力卻真的做不到，可以做個普通人嗎？</div>
+<div class="detail-image-crop">
+  <img src="chapter4.png" alt="复读故事封面" class="detail-image">
+</div>  </section>
+
+  <article class="article-body">
+     <h3 class="fade-in-up">只想做一個普通人：<strong>我真的很認真，但就是跟不上</strong></h3>
+  <p>17歲的小胡低著頭，不像常見的朝氣少年，他有著超越年紀的<span style="font-weight:700;">沉穩</span>，眼神裡透著淡淡的<span style="font-weight:700;">疲倦</span>。</p>
+  <p>當他告訴我們“物理和數學學起來非常吃力”時，語氣平靜卻帶著一絲<span style="font-weight:700;">無奈</span>。</p>
+  <p>他輕輕嘆氣，窗外陽光斜照，在他臉上投下斑駁光影——明明渴望平凡，卻不得不在<span style="font-weight:700;">學業重壓</span>下前行。</p>
+  <p>“老師和父母覺得學習很簡單，只要顧好自己的一畝三分地就行。”<br>
+     他聲音中帶著哽咽：“我媽幫我報了補習班，但老師<strong>講得太快</strong>……我不是一對一，而是跟好幾個人一起，別人都聽懂了，唯獨我沒懂。”</p>
+  <p>“我嘗試過各種學習方法，真的很<span style="font-weight:700;">認真</span>，但還是跟不上。”他說，即便後來的一對一物理課，也只是<strong>勉強</strong>跟上。</p>
+  <p>“每天都很累，真的很迷茫。我不是那種有遠大抱負的人，只想做一個<span style="font-weight:700;">普通人</span>……”</p>
+
+  <div class="illustration-section">
+    <img src="4.1.png" alt="小胡承受學業重壓的無奈">
+    <div class="caption">圖1 小胡承受學業重壓的無奈</div>
+    </div>
+
+<h3 class="fade-in-up">媽媽覺得盡力了：可我的壓力更大了</h3>
+  <p>混跡二次元，成了他逃離現實壓力的<span style="font-weight:700;">避風港</span>。動漫人物所處的虛擬世界，卻讓他感到片刻的<span style="font-weight:700;">安寧</span>。「日常如果休息的話，我就喜歡看看動漫，還喜歡收藏谷子。」</p>
+  <p>漸漸繁重的學習任務對小胡來說很痛苦，常出現「<span style="font-weight:700;">很累</span>」「<span style="font-weight:700;">很困</span>」「<span style="font-weight:700;">好難</span>」等字眼。</p>
+  <p>「為了讓我精神點，媽媽特意托人去哈爾濱買了<span style="font-weight:700;">營養藥</span>……」他苦笑：「用沒有用不知道，至少媽媽覺得<span style="font-weight:700;">盡力了</span>。」但他補充：「我總感覺壓力更大了，不想辜負她的期望……」</p>
+  <p>母親如其他望子成龍的家長，總覺得他沒有<span style="font-weight:700;">盡全力</span>。即便早出晚歸、反覆刷題，他依舊不知道如何再努力——壓力甚至逼得他去看心理醫生。</p>
+  <p>「我以為自己有點抑鬱，後來媽媽陪我做了<span style="font-weight:700;">心理輔導</span>，卻依舊常與她起衝突，爸爸只好交替管我的學習。」</p>
+  <p>至今，他認為問題尚未真正解決，內心深處的<span style="font-weight:700;">迷茫</span>、壓力與痛苦依然揮之不去——「有時，我會懷疑自己是否真的適合理科，是否應該重新審視自己的能力……」</p>
+
+  <div class="illustration-section">
+    <img src="4.2.png" alt="二次元世界的短暫安寧">
+    <div class="caption">圖2 二次元世界的短暫安寧</div>
+  </div>
+
+    <div class="wave-divider medium">
+      <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
+        <path d="M0,100 C300,300 900,-100 1200,100 L1200,0 L0,0 Z" fill="#000"></path>
+      </svg>
+    </div>
+
+    <h3 class="fade-in-up">不需要的“幫助”：想過一種不被定義的人生</h3>
+  <p>被問到希望父母老師怎麼幫助解決學習困難，他猛然抬頭，激動地說：<strong>「不需要！」</strong>他需要的不是說教或令人窒息的陪伴，而是充足的<span style="font-weight:700;">獨立空間</span>——能像大人一樣自己做決定、自由地喜歡自己想要的東西。</p>
+  <p>他渴望主宰自己的人生，擁有<span style="font-weight:700;">獨立思考</span>的權利，而不是被成績好壞簡單定義。</p>
+  <p>他坦言並不喜歡過於古板嚴厲的老師：“他們總說要走出小縣城，去更遠的地方闖蕩。但不管是縣城還是北上廣，都各有好壞，為什麼不能讓我自己選呢？”</p>
+  <p>雖然他不了解「學習困難門診」的開設，也沒做過病理性確診，但被問及願不願意去檢查時，他聲音很小地回答：<strong>「如果能明確，我就不用再被強迫學習了。」</strong></p>
+  <p><strong>「為什麼長輩們即使不知道我怎麼樣，也只透過成績好壞來給孩子貼標籤？」</strong></p>
+
+  <div class="illustration-section">
+    <img src="4.3.png" alt="不被定義的自由">
+    <div class="caption">圖3 不被定義的自由</div>
+  </div>
+
+    <a href="index.html#chapters" class="btn btn-outline-primary mt-4">⬆ 回章節列表</a>
+  </article>
+
+  <footer class="text-center py-3" style="background: var(--dark); color:#ccc;">
+    &copy; 2025 康康新聞網 — 專題報道
+  </footer>
+<div id="back-to-top" title="回到頂部">↑</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const els = document.querySelectorAll('.fade-in-up');
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    els.forEach(el => io.observe(el));
+  });
+  </script>
+ <script>
+    const back = document.getElementById('back-to-top');
+    // 滾動達到 200px 時顯示
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 200) back.classList.add('visible');
+      else back.classList.remove('visible');
+    });
+    // 點擊平滑滾回頂端
+    back.addEventListener('click', e => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('.rain-container');
+    const NUM_DROPS = 150;
+    function createDrop() {
+      const d = document.createElement('div');
+      d.className = 'rain-drop';
+      d.style.left = Math.random() * window.innerWidth + 'px';
+      d.style.setProperty('--x-speed', (Math.random() * 40 - 20).toFixed(1));
+      d.style.animationDuration = (Math.random() * 0.5 + 0.4).toFixed(2) + 's';
+      container.appendChild(d);
+      d.addEventListener('animationend', () => {
+        d.remove();
+        createDrop();
+      });
+    }
+    for (let i = 0; i < NUM_DROPS; i++) {
+      setTimeout(createDrop, Math.random() * 1000);
+    }
+  });
+  </script>
+</body>
+</html>

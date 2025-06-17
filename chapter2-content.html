@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>一、學習「圍城」：在溫暖中突圍，或在困境裡徘徊？</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+ #back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 44px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s, visibility .3s;
+    z-index: 100;
+  }
+  #back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+   .rain-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;               /* 保证容器足够高 */
+
+}
+
+.rain-drop {
+  position: fixed;
+  top: -100px;
+  left: 50%; /* JS 会覆盖 left */
+  width: 2px; height: 15px;
+  background: rgba(255,255,255,0.6);
+  filter: blur(1px);
+  animation: rain-fall linear infinite;
+  pointer-events: none;
+  z-index: 9999; /* 足够高，置于最前 */
+}
+@keyframes rain-fall {
+  to {
+    transform: translateX(calc(var(--x-speed)*1px))
+               translateY(calc(100vh + 100px));
+  }
+}
+
+
+    :root { --primary: #ff5722; --dark: #000; }
+    body { margin:0; font-family:'Noto Sans TC',sans-serif; background:#f7f7f7; color:#333; }
+    a { text-decoration:none; color: inherit; }
+    .site-header { background: var(--dark); color: #fff; text-align: center; padding:1rem 0; }
+    .site-header h1 { margin:0; font-size:1.8rem; }
+    /* 圖片板塊 */
+    .fade-in-up {opacity: 0;transform: translateY(20px);transition: opacity .6s ease-out, transform .6s ease-out;}
+    .fade-in-up.visible {opacity: 1;transform: translateY(0);}
+    .article-header {
+  background: url('chapter2.png') center/cover fixed no-repeat;
+  /* 原来的 <img> 删掉，文字依然在上面 */
+  color: #fff;}
+ .wave-divider {
+  overflow: hidden;
+  line-height: 0;
+  position: relative;
+  width: 100%;
+}
+.wave-divider svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.wave-divider path {
+  fill: #000; /* 黑色波浪 */
+}
+
+/* 对应不同层级的 SVG 高度 */
+.wave-divider.small svg  { height: 100px; }
+.wave-divider.medium svg { height: 200px; }
+.wave-divider.large svg  { height: 240px; }
+
+    .article-header { text-align:center; padding:2rem 1rem; background:#000; color:#fff; }
+    .article-header .highlight { font-size:1.5rem; color:var(--primary); margin-bottom:1rem; }
+    .article-header .title { font-size:2.5rem; font-weight:700; margin-bottom:1.5rem; color:#fff; }
+    .detail-image { max-width:100%; height:auto; border-radius:4px; }
+    /* 正文：黑底白字 */
+    .article-body { max-width:800px; margin:0 auto; color:#000; background:#fff; padding:2rem 1rem; line-height:1.8; font-size:1rem; }
+    .article-body p { margin-bottom:1.5rem; text-align:left; }
+    /* 小標題 */
+.article-body h3 {
+  font-size: 1.8rem; /* 原來1.3rem，調整為更明顯的大字體 */
+  font-weight: 800; /* 加粗 */
+  text-align: center;
+  margin: 2.5rem 0 1.5rem;
+}    /* 插圖與圖注 */
+    .illustration-section { text-align:center; margin:2rem 0; }
+    .illustration-section img { max-width:100%; height:auto; border-radius:4px; }
+    .caption { font-size:0.85rem; color:#ccc; text-align:center; margin-top:0.5rem; }
+    /* 回列表按鈕 */
+    .btn-outline-primary { border-color: #fff; color: #fff; }
+    .btn-outline-primary:hover { background: #fff; color: #000; }
+.article-body p:last-of-type {
+  font-size: 1.3rem; /* 明顯放大 */
+  font-weight: 700; /* 加粗 */
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem; /* 使用醒目的主色凸顯 */
+}
+</style>
+</head>
+<body>
+<div class="rain-container">
+  <header class="site-header">
+    <h1>康康新聞網：專題報道</h1>
+  </header>
+
+  <section class="article-header">
+    <div class="highlight">聚焦學習困難兒童</div>
+    <div class="title">學習 “圍城”：在溫暖中突圍，或在困境裡徘徊？</div>
+    <img src="chapter2.png" alt="學習圍城插圖" class="detail-image">
+  </section>
+
+  <article class="article-body">
+    <h3 class="fade-in-up">陰影處的荊棘叢生：也曾焦慮困難交織</h3>
+    <p>「我會不停地在腦海裡設想各種考試結果，成功的喜悅、失敗的沮喪，這些念頭就像潮水一般湧來，壓得我喘不過氣。」星星這樣告訴我們。</p>
+    <p>20岁的她，去年刚从湖南来到中国海洋大学进行学习，或许在很多人看来，这是一所很不错的学校，能够来到这里的同学对未来并没有太大的忧虑，但星星却说：“作为一个学生，我还是会出现学习焦虑的问题，尤其是考试来临的时候这种焦虑感会达到一个巅峰状态，每次大考前，我都会不由自主地想象各种成功或失败的场景，内心压力巨大。”她紧咬着嘴唇，眼神有些游离，仿佛眼前已经浮现出考场上的紧张画面。她提到，学校对成绩的重视、家庭的期待以及自己心中设定的目标，如同三重枷锁，让她考试前的日子里备受煎熬。</p>
+    <p>对星星而言，学习的道路并非一帆风顺。在成长的赛道上，“学习困难”往往成为横亘在很多学生面前的一道坎，星星也不例外。她坦言道：“高一的时候物理学习出现了很大的问题，因为对于老师的授课方式特别不适应，我很难有效地在上课时间吃透所有的知识点，在平时的周考和小测中就表现得不是很好。”每当看到成绩单上的低分，挫败感与焦虑感便如狂风般袭来。自我怀疑的声音也在心底不断回响，“是不是自己根本不适合学习物理？” 这种对自身能力的质疑，使她陷入了深深的苦恼之中。</p>
+    <p>“学校的期望、家庭的关注以及自身的目标，都让我感到焦虑。但大部分的学习焦虑都是在自己的接受范围之内。”星星看着我们淡淡地说，她神色慢慢趋于平静，望着窗外的树枝，“我通常会采取深呼吸、冥想等方法来缓解焦虑，有时也会进行适量的运动来放松身心。可能我会更喜欢通过兴趣爱好放松自己，比如听音乐，它能帮助我暂时忘却压力。”</p>
+    <div class="illustration-section">
+      <img src="2.1.png" alt="考場前焦慮示意">  
+      <div class="caption">圖1 学校的期望、家庭的关注以及自身的目标，都让我感到焦虑。</div>
+    </div>
+    
+  <div class="wave-divider small">
+  <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+    <!-- 振幅：100px，C 控制点上下落差大 -->
+    <path d="M0,50 C300,150 900,-50 1200,50 L1200,0 L0,0 Z" />
+  </svg>
+  </div>
+    
+    <h3 class="fade-in-up">暖陽穿透繭房：陪伴構築溫暖避風港</h3>
+    <p>時代如同汪洋大海，裹挾著每個個體不斷向前，當社會的期望與對自身的要求像極大漩渦侵蝕時，家人和朋友的關心就成了避難所。</p>
+    <p>星星告訴我們，她經常會與父母傾訴煩惱，分享心情，他們的支持與鼓勵總能讓她在短時間內調整好心態，繼續前行。「和他們傾訴後，我能明顯感覺到心裡的石頭落了地，又有了重新出發的力量。」</p>
+    <p>“我觉得父母在我的成长过程中更多扮演着朋友的角色吧，他们会比较关注我的情绪变化，给予适时的安慰和建议，所以我会养成一种习惯，遇到问题时首先想到与他们沟通，寻求帮助。”这种亲密无间的信任感，让她在面对学习压力感到焦虑时，总能找到情绪的出口。因为知道自己有着坚强的后盾，所以星星才有了更多的底气，因为这种底气，她慢慢学会自我调节，变得更加坚强和独立。</p>
+    <p>谈及学业成绩，她的表情显得较为平静。“我很少感受到父母给我施加的压力。”她轻轻摇了摇头，眼神中带着一丝庆幸，“他们总是告诉我，只要我努力了，开心就好。”当成绩不尽如人意时，父母的反应让她倍感温暖。“他们会笑着安慰我，说一次考试并不能代表什么，下次努力就行。”考试过后，父母还会精心安排放松活动。“我们会一起去品尝美食，漫步在公园的小径，或是沿着江边惬意地散步。”她的眼神中充满了对这些美好时光的怀念，“在这种宽松的氛围下，我反而更有学习的动力，因为我不想让他们失望。”</p>
+    <p>家庭的教育背景和文化氛围，如同涓涓细流，滋润着她中学阶段的学习成长。虽然父母的文化水平不是很高，但他们却对她的学习产生了深远的影响。“他们鼓励我自主学习，给我充足的时间去探索适合自己的学习方式。”</p>
+    <p>在阅读习惯的培养上，父母更是功不可没。“他们经常带我去图书馆和书店，让我自由挑选书籍。无论是文学名著还是科普读物，甚至是一些被认为‘不务正业’的小说，他们都不会过多干涉，只要我不沉迷其中。”
+    正是在这样宽松的环境下，她阅读了大量的书籍，拓宽了视野。那些书籍也像一把把钥匙，打开了星星知识的大门，让她学会思考，找到了自己的兴趣所在。
+  </p>
+    <div class="illustration-section">
+      <img src="2.2.png" alt="家庭支持示意">  
+      <div class="caption">圖2 我很少感受到父母给我施加的压力</div>
+    </div>
+  <div class="wave-divider medium">
+  <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
+    <path fill="#000">
+      <animate attributeName="d"
+               dur="6s"
+               repeatCount="indefinite"
+               values="
+        M0,100 C300,300 900,-100 1200,100 L1200,0 L0,0 Z;
+        M0,80  C300,240 900,-80  1200,80  L1200,0 L0,0 Z;
+        M0,120 C300,360 900,-120 1200,120 L1200,0 L0,0 Z;
+        M0,100 C300,300 900,-100 1200,100 L1200,0 L0,0 Z
+      " />
+    </path>
+  </svg>
+  </div>
+    <h3 class="fade-in-up">微光待聚：她是困境中被看見的“極少數”</h3>
+    <p>星星是幸運的，家人和朋友的支持與理解，使她能與自己的不完美和解，重新出發。然而，仍有許多孩子在學習困境中掙扎，缺乏支持與理解。</p>
+    <p>但是在现实中，依然有很多孩子因为不完美而遭到家人的不理解，甚至是嫌弃与谩骂。根据 WHO 的数据，全球 5%-15% 的儿童受学习困难影响，约 60% 的中小学生存在不同程度的学习焦虑。星星特别提到，她身边也有很多很努力但是成绩就是上不去的同学。“他们的情况我很理解，我通常会主动提供帮助，分享自己的学习方法，给他们我的笔记，让他们有需要的时候可以随时找我。老师和同学们大多也持理解的态度。但是多多少少还是会存在偏见和歧视，对于成绩好的同学，大家可能包容度会更高，也会更愿意与其交往。”</p>
+    <p>星星向我们坦言：“成绩优异的同学仿佛自带光芒，总能得到更多的包容与喜爱，在各种活动中崭露头角，成为众人瞩目的焦点。而那些努力却成绩不佳的同学，却常常被忽视，只能在社交的边缘默默徘徊。”事实上，很多孩子也付出了相应的汗水与努力，成绩却依旧如镜花水月，遥不可及。</p>
+    <p>一次次的考试失利，如同冰冷的重锤，无情地击碎他们的希望。孩子们满心期待着家长的理解与安慰，得到的却是对成绩的苛责与不满。星星说道：“一些家长对孩子的过度干预，看似是帮助，实则让孩子失去独立思考的机会，反而加剧了焦虑现象。家庭环境的变化让他们难以集中精力学习，这又何尝不是另一种的学习困难呢？”</p>
+    <p></p>
+    <div class="illustration-section">
+      <img src="2.3.png" alt="社交邊緣示意">  
+      <div class="caption">圖3 对成绩差的同学会有歧视</div>
+    </div>
+  <div class="wave-divider large">
+  <svg viewBox="0 0 1200 240" preserveAspectRatio="none">
+    <path fill="#000">
+      <animate attributeName="d"
+               dur="8s"
+               repeatCount="indefinite"
+               values="
+        M0,120 C300,360 900,-120 1200,120 L1200,0 L0,0 Z;
+        M0,100 C300,300 900,-100 1200,100 L1200,0 L0,0 Z;
+        M0,140 C300,420 900,-140 1200,140 L1200,0 L0,0 Z;
+        M0,120 C300,360 900,-120 1200,120 L1200,0 L0,0 Z
+      " />
+    </path>
+  </svg>
+  </div>
+    
+    <p>常说家庭是青少年成长的引路灯，可一些家庭对教育的态度，究竟是在照亮前行的路，还是推波助澜地让孩子走向另一个深渊呢？</p>
+
+    <a href="index.html#chapters" class="btn btn-outline-primary mt-4">⬆ 回章節列表</a>
+  </article>
+
+  <footer class="text-center py-3" style="background: var(--dark); color:#ccc;">
+    &copy; 2025 康康新聞網 — 專題報道
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</div>
+ <div id="back-to-top" title="回到頂部">↑</div>
+ <script>
+    const back = document.getElementById('back-to-top');
+    // 滾動達到 200px 時顯示
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 200) back.classList.add('visible');
+      else back.classList.remove('visible');
+    });
+    // 點擊平滑滾回頂端
+    back.addEventListener('click', e => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const els = document.querySelectorAll('.fade-in-up');
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  els.forEach(el => io.observe(el));
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.querySelector('.rain-container');
+  const NUM_DROPS = 150;
+  function createDrop() {
+    const d = document.createElement('div');
+    d.className = 'rain-drop';
+    d.style.left = Math.random() * window.innerWidth + 'px';
+    d.style.setProperty('--x-speed', (Math.random() * 40 - 20).toFixed(1));
+    d.style.animationDuration = (Math.random() * 0.5 + 0.4).toFixed(2) + 's';
+    container.appendChild(d);
+    d.addEventListener('animationend', () => { d.remove(); createDrop(); });
+  }
+  for (let i = 0; i < NUM_DROPS; i++) {
+    setTimeout(createDrop, Math.random() * 1000);
+  }
+});
+</script>
+
+</html>
