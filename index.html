@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>康康新聞網：專題報道</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous"
+  />
+  <style>
+    :root {
+      --primary: #ff5722;
+      --dark: #121212;
+      --light: #f7f7f7;
+    }
+    body {
+      margin:0;
+      font-family: 'Noto Sans TC', sans-serif;
+      background: var(--light);
+      color: #333;
+    }
+    a { text-decoration:none; color: inherit; }
+
+    .site-header { background: var(--dark); color: #fff; text-align: center; padding: 1rem 0; }
+    .site-header h1 { margin:0; font-size:1.8rem; }
+
+    .main-nav { background: var(--dark); }
+    .main-nav ul {
+      list-style:none; display:flex; justify-content:center;
+      padding:0.5rem 0; margin:0;
+    }
+    .main-nav li { margin:0 1.5rem; }
+    .main-nav a {
+      color:#fff; font-weight:500; transition: color .2s;
+    }
+    .main-nav a:hover { color: var(--primary); }
+
+    /* ===== 改动：Hero 區塊改為全屏 + 漸層遮罩 ===== */
+#hero {
+  /* 原来是 height: 60vh; */
+  height: 100vh;               /* ← 撑满整个视窗（由 60vh 改为 100vh） */
+  position: relative;
+  background: url('helpchildren.png') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+#hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  /* 原来是半透明黑色遮罩：background: rgba(0,0,0,0.4); */
+  background: linear-gradient(
+    to bottom,
+    var(--dark) 0%,       /* ← 导航栏同色开始 */
+    rgba(0,0,0,0) 50%     /* ← 到图片透明，形成过渡 */
+  );
+  pointer-events: none;
+}
+/* ===== 底部也做渐变 ===== */
+#hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px; /* 渐变高度，可按需调整 */
+  background: linear-gradient(
+    to top,
+    var(--light) 0%,       /* 底部背景色（跟 body 背景一致） */
+    rgba(255,255,255,0) 100% /* 渐变至透明 */
+  );
+  pointer-events: none;
+}
+
+    
+    #hero .hero-body { position:relative; z-index:1; max-width:800px; }
+    #hero h2 {
+      font-size:2.8rem; margin-bottom:0.5rem;
+      text-shadow:0 2px 6px rgba(0,0,0,0.7);
+    }
+    #hero p {
+      font-size:1.1rem; margin-bottom:2rem;
+      text-shadow:0 1px 4px rgba(0,0,0,0.7);
+    }
+    #hero .btn {
+      background: var(--primary); border:none;
+    }
+
+    #toc {
+      background:#fff; border:1px solid #ddd; border-radius:4px;
+      padding:0.5rem 1rem; margin:2rem auto; max-width:960px;
+      text-align:center;
+    }
+    #toc a {
+      margin:0 0.8rem; color:var(--primary); font-size:0.95rem;
+    }
+
+    .chapter-row {
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+      gap:1rem; max-width:1200px; margin:2rem auto; padding:0 1rem;
+    }
+    .chapter-card { display: block;   
+      background:#fff; border-radius:6px;
+      overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      transition:transform .3s,box-shadow .3s;
+    }
+    .chapter-card:hover {
+      transform:translateY(-4px);
+      box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    }
+    .chapter-card img {
+      width:100%; height:180px; object-fit:cover;
+    }
+    .chapter-card .body {
+      padding:1rem;
+    }
+    .chapter-card h5 {
+      font-size:1.1rem; margin-bottom:0.5rem; color:#222;
+    }
+    .chapter-card blockquote {
+      margin:0; font-size:0.9rem; color:#555;
+      border-left:3px solid var(--primary); padding-left:0.8rem;
+    }
+
+    #chart { text-align:center; margin:3rem 0; }
+    #chart img {
+      max-width:80%; border:1px solid #ccc; border-radius:4px;
+    }
+    #chart p { color:#666; font-size:0.9rem; }
+
+    #conclusion {
+      background:var(--dark); color:#fff;
+      padding:3rem 1rem; text-align:center;
+    }
+    #conclusion blockquote {
+      font-size:1.2rem; line-height:1.5;
+      max-width:700px; margin:0 auto;
+    }
+
+    #memo { max-width:800px; margin:3rem auto; }
+    #memo h3 { text-align:center; margin-bottom:1.5rem; }
+    .accordion-button:not(.collapsed) {
+      background: var(--primary); color: #fff;
+    }
+    .accordion-body { background: #fafafa; }
+
+     .age-row {
+      display: flex;                      /* 水平排版 */
+      justify-content: center;            /* 水平置中 */
+      align-items: flex-end;              /* 對齊底部 */
+      background: #fff;                   /* 白底 */
+      padding: 1rem 0;                    /* 上下間距 */
+      width: 100%;                        /* 滿版寬度 */
+    }
+
+    /* ← 新增：所有圖片都要白底 & 等比例顯示 */
+    .age-row img {
+      background: #fff;                   /* 單張圖白底 */
+      margin: 0 10px;                     /* 左右間距 */
+      object-fit: contain;                /* 保持長寬比 */
+      vertical-align: bottom;    
+        opacity: 0;
+      transition: opacity 0.5s ease;         
+    }
+    
+    .age-row img.visible {
+      opacity: 1;
+    }
+    /* ← 新增：各年齡的尺寸＆翻轉 */
+    .age-baby   { width:  60px; transform: scaleX(-1); } /* 翻轉──幼兒 */
+    .age-child  { width: 100px; }                        /* 兒童 */
+    .age-teen14 { width: 120px; }                        /* 14歲 */
+    .age-teen18 { width: 140px; } /* 翻轉──18歲 */
+    .age-adult  { width: 160px; }                        /* 成年 */
+
+    /* ===== 既有樣式 不變 ===== */
+    .age-row {
+  position: relative;
+  /* 其他既有設定… */
+
+  /* Windows/WebKit 通用遮罩 */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black       10%,
+    black       90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black       10%,
+    black       90%,
+    transparent 100%
+  );
+   .detail-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .detail-header h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .detail-header img {
+    max-width: 100%;
+    height: auto;
+    border-radius: .25rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Header & Nav -->
+  <header class="site-header">
+    <h1>康康新聞網：專題報道</h1>
+  </header>
+  <nav class="main-nav">
+    <ul>
+      <li><a href="#hero">首頁</a></li>
+      <li><a href="#toc">章節目錄</a></li>
+      <li><a href="#chapters">章節一覽</a></li>
+      <li><a href="#conclusion">結語 & 手記</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-body">
+      <h2>聚焦學習困難兒童</h2>
+      <p>大道至簡，唯愛與理解可破浪。<br>
+         願每個孩子，都在陽光與包容中，找到自己的成長之路。</p>
+    </div>
+  </section>
+
+  <!-- Anchor Nav -->
+  <div id="toc">
+    <a href="#chapter2">一、學習「圍城」</a>
+    <a href="#chapter3">二、ADHD背後</a>
+    <a href="#chapter4">三、盡力卻做不到</a>
+    <a href="#chapter5">四、復讀不是我的選擇</a>
+    <a href="#chapter6">五、疾病與生存能力平衡</a>
+    <a href="#chapter7">六、老師的自白</a>
+  </div>
+
+     <!-- 新增：年齡插圖列（置中 + 白底） -->
+  <div
+    class="age-row d-flex justify-content-center"
+    style="
+      background-color: #fff;padding: 1rem 0;          
+    ">
+    
+    <!-- 1. baby.png 翻轉 + 白底 -->
+    <img
+      src="baby.png"
+      alt="幼兒"
+      style="
+        width: 60px;
+        margin: 0 10px;
+        transform: scaleX(-1);
+        background-color: #fff;  /* ← 單張圖背景也設白 */
+      "
+    />
+
+    <!-- 2. girl.png 按年齡比例放大 + 白底 -->
+    <img
+      src="girl.png"
+      alt="兒童"
+      style="
+        width: 100px;
+        margin: 0 10px;
+        background-color: #fff;  /* ← 白底 */
+      "
+    />
+
+    <!-- 3. 14girl.png 白底 -->
+    <img
+      src="14girl.png"
+      alt="14歲少女"
+      style="
+        width: 120px;
+        margin: 0 10px;
+        background-color: #fff;  /* ← 白底 */
+      "
+    />
+
+    <!-- 4. 18girl.png 翻轉 + 白底 -->
+    <img
+      src="18girl.png"
+      alt="18歲少女"
+      style="
+        width: 140px;
+        margin: 0 10px;
+        transform: scaleX(-1);
+        background-color: #fff;  /* ← 白底 */
+      "
+    />
+
+    <!-- 5. 30woman.png 白底 -->
+    <img
+      src="30woman.png"
+      alt="30歲女性"
+      style="
+        width: 160px;
+        margin: 0 10px;
+        background-color: #fff;  /* ← 白底 */
+      "
+    />
+
+  </div>
+
+  <!-- Chapters as Cards -->
+  <section id="chapters" class="chapter-row">
+    <a id="chapter2" class="chapter-card d-block" href="chapter2-content.html">
+      <img src="chapter2.png" alt="學習圍城插圖">
+      <div class="body">
+        <h5>一、學習「圍城」：在溫暖中突圍，或在困境裡徘徊？</h5>
+        <blockquote>「我會不停地在腦海裡設想各種考試結果，這些念頭就像潮水一般湧來…」</blockquote>
+      </div>
+    </a>
+    <a id="chapter3" class="chapter-card d-block" href="chapter3-content.html">
+      <img src="chapter3.png" alt="ADHD背後插圖">
+      <div class="body">
+        <h5>二、ADHD背後：請你救自己，千千萬萬次</h5>
+        <blockquote>「作業沒兩分鐘就想走神，我真的看不下去。」──繪子的童年獨白</blockquote>
+      </div>
+    </a>
+    <a id="chapter4" class="chapter-card d-block"href="chapter4-content.html">
+      <img src="chapter4.png" alt="普通人願望插圖">
+      <div class="body">
+        <h5>三、盡力卻真的做不到，可以做個普通人嗎？</h5>
+        <blockquote>「我真的很認真，但就是跟不上……我只想做一個普通人。」──小胡的呐喊</blockquote>
+      </div>
+    </a>
+    <a id="chapter5" class="chapter-card d-block" href="chapter5-content.html">
+      <img src="chapter5.png" alt="復讀選擇插圖">
+      <div class="body">
+        <h5>四、復讀不是我的選擇：因為害怕而順從忍讓</h5>
+        <blockquote>「我就是不想學習，可是攝像頭一直盯著我…」──小曹的無奈</blockquote>
+      </div>
+    </a>
+    <a id="chapter6" class="chapter-card d-block" href="chapter6-content.html">
+      <img src="chapter6.png" alt="疾病平衡插圖">
+      <div class="body">
+        <h5>五、疾病與生存能力的平衡：用耐心與包容尋找出路</h5>
+        <blockquote>「六十分的二年級語文卷，伴隨著長達三小時的診斷…」</blockquote>
+      </div>
+    </a>
+    <a id="chapter7" class="chapter-card d-block" href="chapter7-content.html">
+      <img src="chapter7.png" alt="老師自白插圖">
+      <div class="body">
+        <h5>六、一個老師的自白：看到他們，我無比痛心</h5>
+        <blockquote>「真正的學習困難，是惡性循環下的家庭與社會。」</blockquote>
+      </div>
+    </a>
+  </section>
+
+
+  <!-- Reporter Memo: 只保留 熊俊康 -->
+  <section id="memo" class="container my-5">
+    <h3 class="mb-4">附：記者手記</h3>
+    <div class="accordion" id="memoAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="memoTwo">
+          <button class="accordion-button collapsed" type="button"
+                  data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+            熊俊康：教育焦慮下的家庭修補與掙扎
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#memoAccordion">
+          <div class="accordion-body">
+            「在學習困難門診的大廳裡，我看見家庭的裂痕，也看見父母為愛付出的矛盾……  
+            這條扶持之路，該如何走得溫暖？」
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<div style="width:100%; margin:0; padding:0;">
+  <iframe
+    src="https://my.spline.design/untitled-iVJeu4jmfsSJzKEDd8ZUD6VR/"
+    frameborder="0"
+    width="100%"
+    height="300px"
+    style="pointer-events: all; display: block; border: none; margin: 0; padding: 0;"
+    allow="fullscreen"
+  ></iframe>
+</div>
+
+  <!-- Conclusion -->
+  <section id="conclusion">
+    <blockquote>
+      即使只是微光，也要烛照一方。<br>
+      願每一位在學習困境中徘徊的孩子，都能被理解與包容，最終破繭而出。
+    </blockquote>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center p-3" style="background: var(--dark); color:#ccc;">
+    &copy; 2025 康康新聞網 — 專題報道．製作：記者團隊
+  </footer>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const imgs = document.querySelectorAll('.age-row img');
+    const io = new IntersectionObserver((entries, obs) => {
+      if (entries[0].isIntersecting) {
+        imgs.forEach((img, i) => {
+          setTimeout(() => {
+            img.classList.add('visible');
+          }, i * 1000); // 每張延遲 2秒
+        });
+        obs.disconnect(); // 只觸發一次
+      }
+    }, { threshold: 0.5 });  // 達到一半可見就觸發
+
+    io.observe(document.querySelector('.age-row'));
+  });
+</script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
